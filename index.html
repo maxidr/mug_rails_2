@@ -59,8 +59,23 @@
 <li>Luis Guardiola (<a href="mailto:lguardiola@gmail.com?subject=Excelente charla :P">lguardiola@gmail.com</a>)</li>
 </ul>
 
-<h2>Modelo inicial</h2>
+<h2>Modelo inicial (propuesto)</h2>
 <img src="http://yuml.me/diagram/scruffy/class/[item|quantity]*->1[product|price], [item|quantity]*->1[order], [order]*->1[client].jpg" />
+
+<h2>Paso a paso</h2>
+
+<h3>Jquery en vez de prototype</h3>
+<p>Rails vienen con prototype con framework javascript por defecto (hasta su versión 3.1 que utiliza jquery por defecto).</p>
+<p>Gracias a un <a href="https://github.com/rails/jquery-ujs">gem</a> vamos a poder cambiar de framework con muy poco esfuerzo, del siguiente modo:</p>
+<p>Primero agregamos al Gemfile:</p>
+<pre>gem 'jquery-rails', '>= 1.0.3'</pre>
+<p>Luego actualizamos nuestras dependencias ejecutando:</p>
+<pre>bundle install</pre>
+<p>Y por último:</p>
+<pre>rails generate jquery:install --ui</pre>
+
+
+
 
 
     <h2>Download</h2>
