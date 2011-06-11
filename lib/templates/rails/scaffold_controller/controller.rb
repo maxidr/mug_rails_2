@@ -1,4 +1,4 @@
-# coding: utf-8
+# encoding: UTF-8
 class <%= controller_class_name %>Controller < ApplicationController
 
   respond_to :html, :xml, :js, :json
@@ -8,8 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   # GET <%= route_url %>.xml
   def index
-		@search = <%= class_name %>.search(params[:search])
-		@<%= plural_table_name %> = @search.paginate(:page => params[:page], :per_page => 15)
+		@<%= plural_table_name %> = <%= class_name %>.all
     respond_with(@<%= plural_table_name %>)
   end
 
