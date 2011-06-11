@@ -63,11 +63,13 @@
 <img src="http://yuml.me/diagram/scruffy/class/[item|quantity]*->1[product|price], [item|quantity]*->1[order], [order]*->1[client].jpg" />
 
 <h2>Paso a paso</h2>
-<h3>Generamos una nueva aplicación</h3>
-<pre>rails new orders</pre>
-<p>Esto nos genera una estructura como esta</p>
-<img src="ordersdiagram.png" />
 
+<h3>Generamos una nueva aplicación</h3>
+
+<pre>rails new orders</pre>
+
+<p>Este comando genera una estructura bajo la carpeta orders</p>
+<img src="ordersdiagram.png" />
 
 
 <h3>Jquery en vez de prototype</h3>
@@ -85,6 +87,13 @@ entonces ejecutamos:</p>
 
 <pre>rails g scaffold product name:string description:text price:decimal</pre>
 
+<p>Algo similar realizamos para customer, order, items</p>
+
+<pre>rails g scaffold customer name:string :text :decimal</pre>
+
+<pre>rails g scaffold order name:string description:text price:decimal</pre>
+
+<pre>rails g scaffold items name:string description:text price:decimal</pre>
 
 
     <h2>Download</h2>
