@@ -3,7 +3,7 @@
 <head>
   <meta charset='utf-8'>
 
-  <title>maxidr/mug_rails_2 @ GitHub</title>
+  <title>mug_rails_2 @ GitHub</title>
 
   <style type="text/css">
     body {
@@ -47,7 +47,7 @@
 
     <div class="description">
       <h3>Repositorio para la <a href="http://goo.gl/5E0py">charla de rails dada en el MUG<a> el 13/06/2011</h3>
-      Generaremos desde cero una mini aplicación clásica de 'pedidos para ventas'. Resolviendo algunos tips comunes que nos presenta el desarrollo de una aplicación web. A saber: modelo, repositorio del código, publicación de prueba y producción, autenticación, paginado, filtros.
+      Generaremos desde cero una mini aplicación clásica de 'pedidos para ventas'. Resolviendo algunos tips comunes que nos presenta el desarrollo de una aplicación web. A saber: modelo, repositorio del código, publicación de prueba y producción, autenticación, permisos, paginado y, filtros.
     </div>
 
     <h2>License</h2>
@@ -73,7 +73,7 @@
 
 
 <h3>Jquery en vez de prototype</h3>
-<p>Rails vienen con <b>prototype</b> como framework javascript (hasta su versión 3.1 que utilizará <b>jquery</b> por defecto).</p>
+<p>Rails vienen con <b>prototype</b> como framework javascript (en la versión 3.1 utilizará <b>jquery</b> por defecto).</p>
 <p>Gracias a un <a href="https://github.com/rails/jquery-ujs">gem</a> vamos a poder cambiar de framework con muy poco esfuerzo, del siguiente modo:</p>
 <p>Primero agregamos al Gemfile:</p>
 <pre>gem 'jquery-rails', '>= 1.0.3'</pre>
@@ -87,14 +87,23 @@ entonces ejecutamos:</p>
 
 <pre>rails g scaffold product name:string description:text price:decimal</pre>
 
-<p>Algo similar realizamos para customer, order, items</p>
+<p>Algo similar realizamos para order e item</p>
 
-<pre>rails g scaffold customer name:string :text :decimal</pre>
+<pre>rails g model item product:references quantity:integer</pre>
 
-<pre>rails g scaffold order name:string description:text price:decimal</pre>
+<pre>rails g scaffold order description:text</pre>
 
-<pre>rails g scaffold items name:string description:text price:decimal</pre>
+<pre>rails g migration add_items_to_orders</pre>
 
+<pre>class AddItemsToOrders < ActiveRecord::Migration
+ def self.up
+    add_column :items, :order_id, :integer
+ end
+
+ def self.down
+    remove_column :items, :order_id
+ end
+end</pre>
 
     <h2>Download</h2>
     <p>
