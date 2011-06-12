@@ -46,7 +46,7 @@
       <span class="small">por <a href="http://github.com/maxidr">los piratas del lado oscuro</a></span></h1>
 
     <div class="description">
-      <h3>Repositorio para la <a href="http://goo.gl/5E0py">charla de rails en el MUG<a> el 13/06/2011</h3>
+      <h3>Repositorio <a href="http://goo.gl/5E0py"> de la charla de rails en el MUG<a> el 13/06/2011</h3>
       Generaremos desde cero una mini aplicación clásica de 'pedidos para ventas'. Resolviendo algunos tips comunes que nos presenta el desarrollo de una aplicación web. A saber: modelo, repositorio del código, publicación de prueba y producción, autenticación, permisos, paginado y, filtros.
     </div>
 
@@ -81,6 +81,8 @@
 <pre>bundle install</pre>
 <p>Y por último:</p>
 <pre>rails generate jquery:install --ui</pre>
+<br/>
+<h3>Tenemos listo el entorno de desarrollo. Comenzamos con la aplicación</h3>
 
 <p>El producto tendrá, inicialmente, un nombre, una descripción y un precio unitario
 entonces ejecutamos:</p>
@@ -89,11 +91,21 @@ entonces ejecutamos:</p>
 
 <p>Algo similar realizamos para order e item</p>
 
+<p>En este caso, generamos solo el modelo... no queremos un CRUD de este</p>
+
 <pre>rails g model item product:references quantity:integer</pre>
+
+
+<p>Ahh de este si queremos todo. Vamos entonces con scaffold para las ordenes</p>
 
 <pre>rails g scaffold order description:text</pre>
 
+
+<p>Ehhh quien fue el que paso mal el requerimiento, caso de uso u historia de usuario??? Necesitamos ITEMS en las ORDENES!!!</p>
+
 <pre>rails g migration add_items_to_orders</pre>
+
+<p>Interesante, la migración nos genera código y podemos utilizarlo como mejor nos guste.</p>
 
 <pre>class AddItemsToOrders < ActiveRecord::Migration
  def self.up
@@ -105,9 +117,21 @@ entonces ejecutamos:</p>
  end
 end</pre>
 
-<p>Y completamos la migración (db/migrate/2011....02_add_items_to_orders) con el siguieten comando</p>
+<p>Y completamos la migración (db/migrate/2011....02_add_items_to_orders) con el siguiente comando</p>
 
 <pre>rake db:migrate</pre>
+
+
+
+<p>No tenemos usuarios para esta aplicación. Ayudanos Devise. Agradecer ao José Valim e Carlos Antônio da Silva</p>
+
+<pre>gem install devise</pre>
+
+<p>Agregamos devise a nuestro Gemfile</p>
+
+<pre>rails generate devise:install</pre>
+
+<pre>rails generate devise user</pre>
 
 
     <h2>Download</h2>
