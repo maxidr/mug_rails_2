@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   respond_to :html, :xml, :js, :json
 
-	before_filter :find_product, :except => [:index, :new, :create]
+#	before_filter :find_product, :except => [:index, :new, :create]
+	load_and_authorize_resource
 
   # GET /products
   # GET /products.xml

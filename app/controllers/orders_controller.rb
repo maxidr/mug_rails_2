@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
 
   respond_to :html, :xml, :js, :json
 
-	before_filter :find_order, :except => [:index, :new, :create]
+#	before_filter :find_order, :except => [:index, :new, :create]
+  load_and_authorize_resource
 
   # GET /orders
   # GET /orders.xml
