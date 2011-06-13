@@ -199,11 +199,47 @@ before_filter  :authenticate_user!
 
 <pre>gem 'cancan'</pre>
 <pre>bundle install</pre>
-<pre>rails g cancan:ability</pre>
 
 <p>Agregamos el indicador de admin al usuario. Migración migración y más migraciones <p>
 
 <pre>rails g migration add_admin_to_users admin:boolean</pre>
+
+<p>Configuramos la gema:</p>
+<pre>rails g cancan:ability</pre>
+
+<p>Esto genera el modelo Ability que contiene la definición de las autorizaciones contra los recursos.
+Vamos a usar como ejemplo:</p>
+
+<pre>
+class Ability
+ include CanCan::Ability
+
+ def initialize(user)
+   if user.admin?
+     can :manage, :all
+   else
+     can :manage, Order
+   end
+ end
+end
+</pre>
+
+<p>Se debe agrega a cada controller la verificación de rol, para ellos se agrega:</p>
+
+<pre>
+ load_and_authorize_resource
+</pre>
+
+<p>a cada uno de los controllers (mas <a href="https://github.com/ryanb/cancan/wiki/authorizing-controller-actions"> info </a>)</p>
+
+<p>Para asegurarnos de que no nos olvidamos la verificación en algún controller le agregamos a app/controllers/application_controller:</p>
+
+<pre>
+ class ApplicationController < ActionController::Base
+   check_authorization
+ end
+</pre>
+
 
 
     <h1>Download</h1>
