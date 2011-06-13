@@ -1,0 +1,6 @@
+  <div id="user-info">
+    <% if user_signed_in? %>
+      <%= "Hi! #{current_user.name}" %> | <%= link_to("Bye!", destroy_user_session_path) %>
+    <% end %>
+  </div>
+
