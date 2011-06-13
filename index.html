@@ -194,7 +194,23 @@ before_filter  :authenticate_user!
 
 <p>Y nuestra aplicación esta segura!!!</p>
 
-    <h2>Download</h2>
+
+<p>Claro ahora queremos que tener un usuario ADMINISTRADOR y un rol de miserable operador!</p>
+<p>entra en escena <b>"CanCan"</b></p>
+
+<pre>gem 'cancan'</pre>
+<pre>bundle install</pre>
+<pre>rails g cancan:ability</pre>
+
+<p>Agregamos el indicador de admin al usuario. Migracion migracion y mas migraciones <p>
+
+<pre>$ rails g migration add_admin_to_users admin:boolean<pre>
+
+
+
+
+
+    <h1>Download</h1>
     <p>
       Puedes descargar este proyecto en los siguientes formatos 
       <a href="http://github.com/maxidr/mug_rails_2/zipball/master">zip</a> o
