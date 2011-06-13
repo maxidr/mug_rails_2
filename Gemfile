@@ -32,4 +32,5 @@ gem 'sqlite3'
 # end
 
 gem 'jquery-rails', '>= 1.0.3'
+gem 'cocoon'
 

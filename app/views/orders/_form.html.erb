@@ -11,27 +11,15 @@
     </div>
   <% end %>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Quantity</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% Product.all.each_with_index do |product, index| %>
-        <tr>
-          <td><%= product.name %></td>
-          <td><%= product.price %></td>
-          <td>
-            <%= text_field_tag "order[items_attributes][#{index}][quantity]" %>
-            <%= hidden_field_tag "order[items_attributes][#{index}][product_id]", product.id %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h2>Products</h2>
+  <div id="product">
+    <%= f.fields_for :items do |item| %>
+      <%= render 'item_fields', :f => item %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add item', f, :items %>
+    </div>
+  </div>
 
   <div class="field">
     <%= f.label :description %><br />
