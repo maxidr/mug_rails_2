@@ -194,7 +194,6 @@ before_filter  :authenticate_user!
 
 <p>Y nuestra aplicación esta segura!!!</p>
 
-
 <p>Claro ahora queremos que tener un usuario ADMINISTRADOR y un rol de miserable operador!</p>
 <p>entra en escena <b>"CanCan"</b></p>
 
@@ -202,12 +201,9 @@ before_filter  :authenticate_user!
 <pre>bundle install</pre>
 <pre>rails g cancan:ability</pre>
 
-<p>Agregamos el indicador de admin al usuario. Migracion migracion y mas migraciones <p>
+<p>Agregamos el indicador de admin al usuario. Migración migración y más migraciones <p>
 
-<pre>$ rails g migration add_admin_to_users admin:boolean<pre>
-
-
-
+<pre>rails g migration add_admin_to_users admin:boolean</pre>
 
 
     <h1>Download</h1>
