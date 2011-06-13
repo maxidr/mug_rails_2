@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
   def index
-		@products = Product.all
+		@products = Product.page(params[:page])
     respond_with(@products)
   end
 

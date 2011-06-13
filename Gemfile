@@ -35,4 +35,5 @@ gem 'jquery-rails', '>= 1.0.3'
 gem 'cocoon'
 gem 'devise'
 gem 'cancan'
+gem 'kaminari'
 
