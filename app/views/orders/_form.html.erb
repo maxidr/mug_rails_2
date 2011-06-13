@@ -20,13 +20,13 @@
       </tr>
     </thead>
     <tbody>
-      <% Product.all.each do |product| %>
+      <% Product.all.each_with_index do |product, index| %>
         <tr>
           <td><%= product.name %></td>
           <td><%= product.price %></td>
           <td>
-            <%= text_field_tag 'order[items_attributes][0][quantity]' %>
-            <%= hidden_field_tag 'order[items_attributes][0][product_id]', product.id %>
+            <%= text_field_tag "order[items_attributes][#{index}][quantity]" %>
+            <%= hidden_field_tag "order[items_attributes][#{index}][product_id]", product.id %>
           </td>
         </tr>
       <% end %>
