@@ -240,6 +240,28 @@ end
  end
 </pre>
 
+<p>Paginando (https://github.com/amatsuda/kaminari)</p>
+
+<p>Agrego la gema:</p>
+<pre>gem 'kaminari'</pre>
+
+<p>Configuro ejecutando:</p>
+<pre>
+ rails g kaminari:config
+</pre>
+
+<p>Vamos con en el controller de productos:</p>
+<pre>
+ def index
+        @products = Product.page(params[:page])
+   respond_with(@products)
+ end
+</pre>
+
+<p>En la vista!</p>
+<pre>
+ <%= paginate @products %>
+</pre>
 
 
     <h1>Download</h1>
