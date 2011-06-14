@@ -4,6 +4,8 @@
   <meta charset='utf-8'>
 
   <title>mug_rails_2 @ GitHub</title>
+  <script src="http://yandex.st/highlightjs/6.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="http://yandex.st/highlightjs/6.0/styles/ir_black.min.css">
 
   <style type="text/css">
     body {
@@ -24,10 +26,13 @@
     a { color: #8a8b13; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
+    pre { background: #000; color: #fff; padding: 15px; }
+    pre code { overflow:auto; width: 658px; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <!--dorado #8a8b13 ; celeste #7574ec-->
 <body>
@@ -54,9 +59,15 @@
 <p><a href="http://es.wikipedia.org/wiki/MIT_License">MIT License</a></p>
 <h2>Authors</h2>
 <ul>
-<li>Maximiliano Dello Russo (<a href="mailto:maxidr@gmail.com?subject=Excelente charla :P">maxidr@gmail.com</a>)</li>
-<li>Luis Petek (<a href="mailto:lmpetek@gmail.com?subject=Excelente charla :P">lmpetek@gmail.com</a>)</li>
-<li>Luis Guardiola (<a href="mailto:lguardiola@gmail.com?subject=Excelente charla :P">lguardiola@gmail.com</a>)</li>
+    <li>
+        Maximiliano Dello Russo | <a href="mailto:maxidr@gmail.com?subject=Excelente charla :P">maxidr@gmail.com</a> | <a href="http://twitter.com/maxidr">@maxidr</a> | <a href="http://maxidr.tumblr.com/">blog</a>
+    </li>
+    <li>
+        Luis Petek              | <a href="mailto:lmpetek@gmail.com?subject=Excelente charla :P">lmpetek@gmail.com</a> | <a href="http://twitter.com/lmpetek">@lmpetek</a> | <a href="http://recorriendootrosrumbos.blogspot.com/">blog</a>
+    </li>
+    <li>
+        Luis Guardiola          | <a href="mailto:lguardiola@gmail.com?subject=Excelente charla :P">lguardiola@gmail.com</a> | <a href="http://twitter.com/lguardiola">@lguardiola</a> | <a href="http://elbardefoo.com.ar/">blog</a> 
+    </li>
 </ul>
 
 <h2>Modelo inicial (propuesto)</h2>
@@ -107,46 +118,70 @@ entonces ejecutamos:</p>
 
 <p>Interesante, la migración nos genera código y podemos utilizarlo como mejor nos guste.</p>
 
-<pre>class AddItemsToOrders < ActiveRecord::Migration
- def self.up
-    add_column :items, :order_id, :integer
- end
+<pre><code class="ruby">
+class AddItemsToOrders < ActiveRecord::Migration
+    def self.up
+        add_column :items, :order_id, :integer
+    end
 
- def self.down
-    remove_column :items, :order_id
- end
-end</pre>
+    def self.down
+        remove_column :items, :order_id
+    end
+end
+</code></pre>
 
 <p>Y completamos la migración (db/migrate/2011....02_add_items_to_orders) con el siguiente comando</p>
 
 <pre>rake db:migrate</pre>
 
 
-<p>Siembra para cosechar</p>
+<p>Siembra para cosechar (db/seeds.rb)</p>
 
-<pre>
-	Product.create!(:name => "HP laser jet P1505", :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 250und,:price => 300.00)
-	Product.create!(:name => "HP laser jet P1020", :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 100und",:price => 200.00)
-	Product.create!(:name => "HP notebook nx8230", :description => "notebook de negocios, confiable y robusta, intel core 2 duo, 4Gb RAM, HD500,:price => 1200.00)
-	Product.create!(:name => "Toshiba notebook A3", :description => "notebook intel core 2 duo, 3Gb RAM, HD120",:price =>  700.00)
-	Product.create!(:name => "Monitor Benq 17", :description => "alto contraste, nitido, widescreen",:price => 150.00)
-	Product.create!(:name => "Router LinkSys wrt54g", :description => "router hogareño posee 4 bocas 10/100, conexion inhalambrica con doble antena, absolutamente configurable",:price => 75.00)
-	Product.create!(:name => "Camara Benq 14M", :description => "Camara de 14Mgp - video, mil caracteristicas que nunca podrá utilizar",:price => 110.00)
-	Product.create!(:name => "Samsung Galaxy S", :description => "Telefono con sistema operativo android, wifi, touch ",:price => 2000.00)
-	Product.create!(:name => "MacBook 13", :description => "intel dual core, 13.3, 4Gb, HD250Gb, MacOSX 10.6",:price => 0.01)
-	Product.create!(:name => "Portafolio para notebook", :description => "varios colores en nylon resistente al agua",:price => 100.00)
-	Product.create!(:name => "Lapiz - portamina", :description => "resiste todo y mas",:price => 7.00)
+<pre><code class="ruby">Product.create!(:name => "HP laser jet P1505", 
+    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 250und", 
+    :price => 300.00)
+Product.create!(:name => "HP laser jet P1020", 
+    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 100und", 
+    :price => 200.00)
+Product.create!(:name => "HP notebook nx8230", 
+    :description => "notebook de negocios, confiable y robusta, intel core 2 duo, 4Gb RAM, HD500, 
+    :price => 1200.00)
+Product.create!(:name => "Toshiba notebook A3", 
+    :description => "notebook intel core 2 duo, 3Gb RAM, HD120", 
+    :price =>  700.00)
+Product.create!(:name => "Monitor Benq 17", 
+    :description => "alto contraste, nitido, widescreen", 
+    :price => 150.00)
+Product.create!(:name => "Router LinkSys wrt54g", 
+    :description => "router hogareño posee 4 bocas 10/100, conexion inhalambrica con doble antena, absolutamente configurable",
+    :price => 75.00)
+Product.create!(:name => "Camara Benq 14M", 
+    :description => "Camara de 14Mgp - video, mil caracteristicas que nunca podrá utilizar",
+    :price => 110.00)
+Product.create!(:name => "Samsung Galaxy S", 
+    :description => "Telefono con sistema operativo android, wifi, touch ",
+    :price => 2000.00)
+Product.create!(:name => "MacBook 13", 
+    :description => "intel dual core, 13.3, 4Gb, HD250Gb, MacOSX 10.6",
+    :price => 0.01)
+Product.create!(:name => "Portafolio para notebook", 
+    :description => "varios colores en nylon resistente al agua",
+    :price => 100.00)
+Product.create!(:name => "Lapiz - portamina", 
+    :description => "resiste todo y mas",
+    :price => 7.00)
+
+#.. Facil pero muy facil. Insertamos datos por una cantidad mayor facilmente ..
+
+(1..100).each do |i| 
+    Product.create!(:name => "Product N:" + i.to_s,
+        :description => "Description de texto variable para que se enumeren todas las virtudes de nuestro produto n: " + i.to_s,
+        :price => (i.to_f * 10) + (i * i) )
+end
+</code></pre>	
 
 
-	#.. Facil pero muy facil. Insertamos datos por una cantidad mayor facilmente ..
-
-	(1..100).each {|i| Product.create!(:name => "Product N:" + i.to_s,
-	 :description => "Description de texto variable para que se enumeren todas las virtudes de nuestro produto n: " + i.to_s,
-	:price => (i.to_f * 10) + (i * i)  )}
-</pre>	
-
-
-<p>Modelos anidados con cocoon (https://github.com/nathanvda/cocoon)</p>
+<h3>Modelos anidados con <a href="https://github.com/nathanvda/cocoon">cocoon</a></h3>
 
 <p>Agregamos al gemfile:</p>
 
@@ -157,26 +192,28 @@ end</pre>
 
 <p>Añadimos al layout principal (app/views/layouts/application.html.erb):</p>
 
-<pre><%= javascript_include_tag :cocoon %></pre>
+<pre><code class="erb"><%= javascript_include_tag :cocoon %></code></pre>
 
 <p>
-Para que funcione generaremos un partial con los datos del item. Para nombrar al partial se utiliza la convención:
+Para que funcione generaremos un <i>partial</i> con los datos del item. Para nombrar al partial se utiliza la convención:
 </p>
 <pre> _<i>model-name</i>_fields.html.erb </pre>
 
-<p>Agregarmos en el partial:</p>
+<p>Agregamos en el partial:</p>
 
-<pre>
+<pre><code class="erb">
 &lt;div class=&quot;nested-fields&quot;&gt;<br/>    &lt;div class=&quot;field&quot;&gt;<br/>      &lt;%= f.label :product_id %&gt;&lt;br /&gt;<br/>      &lt;%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name, f.object.product_id.to_i) %&gt;<br/>    &lt;/div&gt;<br/>    &lt;div class=&quot;fields&quot;&gt;<br/>      &lt;%= f.label :quantity %&gt;&lt;br /&gt;<br/>      &lt;%= f.text_field :quantity %&gt;<br/>    &lt;/div&gt;<br/><br/>    &lt;%= link_to_remove_association &quot;remove item&quot;, f %&gt;<br/><br/>  &lt;/div&gt;
-</pre>
+</code></pre>
 
 <p>Y en el form de order (app/view/orders/_form):</p>
 
-<pre> 
+<pre><code class="erb">
 &lt;pre&gt;<br/> &lt;h2&gt;Products&lt;/h2&gt;<br/> &lt;div id=&quot;product&quot;&gt;<br/>   &lt;%= f.fields_for :items do |item| %&gt;<br/>     &lt;%= render 'item_fields', :f =&gt; item %&gt;<br/>   &lt;% end %&gt;<br/>   &lt;div class=&quot;links&quot;&gt;<br/>     &lt;%= link_to_add_association 'add item', f, :items %&gt;<br/>   &lt;/div&gt;<br/> &lt;/div&gt;<br/><br/> &lt;div class=&quot;field&quot;&gt;<br/>   &lt;%= f.label :description %&gt;&lt;br /&gt;<br/>   &lt;%= f.text_area :description %&gt;<br/> &lt;/div&gt;<br/>&lt;/pre&gt;
-</pre>
+</code></pre>
 
-<p>No tenemos usuarios para esta aplicación. Ayudanos Devise. Agradecer ao José Valim e Carlos Antônio da Silva</p>
+<h3>Autenticación??, <a href="https://github.com/plataformatec/devise">devise</a> al rescate</h3>
+
+<p>No tenemos usuarios para esta aplicación. Ayudanos <a href="https://github.com/plataformatec/devise">devise</a>. Agradecer a <a href="http://blog.plataformatec.com.br/">José Valim y Carlos Antônio da Silva</a></p>
 
 <pre>gem install devise</pre>
 
@@ -195,7 +232,7 @@ before_filter  :authenticate_user!
 <p>Y nuestra aplicación esta segura!!!</p>
 
 <p>Claro ahora queremos que tener un usuario ADMINISTRADOR y un rol de miserable operador!</p>
-<p>entra en escena <b>"CanCan"</b></p>
+<h3>Entra en escena <a href="https://github.com/ryanb/cancan/">CanCan</a></h3>
 
 <pre>gem 'cancan'</pre>
 <pre>bundle install</pre>
@@ -210,7 +247,7 @@ before_filter  :authenticate_user!
 <p>Esto genera el modelo Ability que contiene la definición de las autorizaciones contra los recursos.
 Vamos a usar como ejemplo:</p>
 
-<pre>
+<pre><code class="ruby">
 class Ability
  include CanCan::Ability
 
@@ -222,7 +259,7 @@ class Ability
    end
  end
 end
-</pre>
+</code></pre>
 
 <p>Se debe agrega a cada controller la verificación de rol, para ellos se agrega:</p>
 
@@ -230,17 +267,17 @@ end
  load_and_authorize_resource
 </pre>
 
-<p>a cada uno de los controllers (mas <a href="https://github.com/ryanb/cancan/wiki/authorizing-controller-actions"> info </a>)</p>
+<p>a cada uno de los controllers (más <a href="https://github.com/ryanb/cancan/wiki/authorizing-controller-actions">info</a>)</p>
 
 <p>Para asegurarnos de que no nos olvidamos la verificación en algún controller le agregamos a app/controllers/application_controller:</p>
 
-<pre>
+<pre><code class="ruby">
  class ApplicationController < ActionController::Base
    check_authorization
  end
-</pre>
+</code></pre>
 
-<p>Paginando (https://github.com/amatsuda/kaminari)</p>
+<h3>Paginando a la <a href="https://github.com/amatsuda/kaminari">kaminari</a></h3>
 
 <p>Agrego la gema:</p>
 <pre>gem 'kaminari'</pre>
@@ -251,54 +288,66 @@ end
 </pre>
 
 <p>Vamos con en el controller de productos:</p>
-<pre>
+<pre><code class="ruby">
  def index
-        @products = Product.page(params[:page])
-   respond_with(@products)
+    @products = Product.page(params[:page])
+    respond_with(@products)
  end
-</pre>
+</code></pre>
 
 <p>En la vista!</p>
-<pre>
- <%= paginate @products %>
-</pre>
+<pre><code class="erb"><%= paginate @products %></code></pre>
 
-	<h1>Links asociados</h1>
+<p>Paginado listo!</p>
 
-	<h2>Blog</h2>
-	<p><a href="http://ror-in-mug.blogspot.com/">Trabajando con Ruby y Rails en el MUG</a></p>
+<h1>Links asociados</h1>
 
-    <h2>Download</h2>
-    <p>
-      Puedes descargar este proyecto en los siguientes formatos 
-      <a href="http://github.com/maxidr/mug_rails_2/zipball/master">zip</a> o
-      <a href="http://github.com/maxidr/mug_rails_2/tarball/master">tar</a>.
-    </p>
-    <p>Puedes clonar el proyecto con <a href="http://git-scm.com">Git</a>
-      para ejecutarlo:
-      <pre>$ git clone git://github.com/maxidr/mug_rails_2</pre>
-    </p>
+<h2>Blog</h2>
+<p><a href="http://ror-in-mug.blogspot.com/">Trabajando con Ruby y Rails en el MUG</a></p>
 
-    <div class="footer">
-      Tiene el codigo fuente en GitHub : <a href="http://github.com/maxidr/mug_rails_2">maxidr/mug_rails_2</a>
-    </div>
-
-  </div>
+<h2>Referencias</h2>
+<ul>
+    <li><a href="https://github.com/rails/jquery-ujs">jquery-ujs</a></li>
+    <li><a href="https://github.com/nathanvda/cocoon">cocoon</a></li>
+    <li><a href="https://github.com/plataformatec/devise">devise</a></li>
+    <li><a href="https://github.com/ryanb/cancan/">cancan</a></li>
+    <li><a href="https://github.com/amatsuda/kaminari">kaminari</a></li>
+    <li><a href="http://railsapi.com/">Rails Searchable API Doc</a></li>
+    <li><a href="http://apidock.com/rails">Apidock</a></li>
+</ul>
 
 
-  <script type="text/javascript">
+<h2>Download</h2>
+<p>
+  Puedes descargar este proyecto en los siguientes formatos 
+  <a href="http://github.com/maxidr/mug_rails_2/zipball/master">zip</a> o
+  <a href="http://github.com/maxidr/mug_rails_2/tarball/master">tar</a>.
+</p>
+<p>Puedes clonar el proyecto con <a href="http://git-scm.com">Git</a>
+  para ejecutarlo:
+  <pre>$ git clone git://github.com/maxidr/mug_rails_2</pre>
+</p>
+
+<div class="footer">
+  Tiene el codigo fuente en GitHub : <a href="http://github.com/maxidr/mug_rails_2">maxidr/mug_rails_2</a>
+</div>
+
+</div>
+
+
+    <script type="text/javascript">
 
       var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-23867617-1']);
           _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                          })();
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-                        </script>
+    </script>
 
 </body>
 </html>
