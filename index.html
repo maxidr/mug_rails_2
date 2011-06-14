@@ -31,7 +31,7 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
-  
+
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <!--dorado #8a8b13 ; celeste #7574ec-->
@@ -66,7 +66,7 @@
         Luis Petek              | <a href="mailto:lmpetek@gmail.com?subject=Excelente charla :P">lmpetek@gmail.com</a> | <a href="http://twitter.com/lmpetek">@lmpetek</a> | <a href="http://recorriendootrosrumbos.blogspot.com/">blog</a>
     </li>
     <li>
-        Luis Guardiola          | <a href="mailto:lguardiola@gmail.com?subject=Excelente charla :P">lguardiola@gmail.com</a> | <a href="http://twitter.com/lguardiola">@lguardiola</a> | <a href="http://elbardefoo.com.ar/">blog</a> 
+        Luis Guardiola          | <a href="mailto:lguardiola@gmail.com?subject=Excelente charla :P">lguardiola@gmail.com</a> | <a href="http://twitter.com/lguardiola">@lguardiola</a> | <a href="http://elbardefoo.com.ar/">blog</a>
     </li>
 </ul>
 
@@ -137,48 +137,48 @@ end
 
 <p>Siembra para cosechar (db/seeds.rb)</p>
 
-<pre><code class="ruby">Product.create!(:name => "HP laser jet P1505", 
-    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 250und", 
+<pre><code class="ruby">Product.create!(:name => "HP laser jet P1505",
+    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 250und",
     :price => 300.00)
-Product.create!(:name => "HP laser jet P1020", 
-    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 100und", 
+Product.create!(:name => "HP laser jet P1020",
+    :description => "Impresora laser hogareña con una unica bandeja, cartucho de toner economico y papel hasta 100und",
     :price => 200.00)
-Product.create!(:name => "HP notebook nx8230", 
-    :description => "notebook de negocios, confiable y robusta, intel core 2 duo, 4Gb RAM, HD500, 
+Product.create!(:name => "HP notebook nx8230",
+    :description => "notebook de negocios, confiable y robusta, intel core 2 duo, 4Gb RAM, HD500,
     :price => 1200.00)
-Product.create!(:name => "Toshiba notebook A3", 
-    :description => "notebook intel core 2 duo, 3Gb RAM, HD120", 
+Product.create!(:name => "Toshiba notebook A3",
+    :description => "notebook intel core 2 duo, 3Gb RAM, HD120",
     :price =>  700.00)
-Product.create!(:name => "Monitor Benq 17", 
-    :description => "alto contraste, nitido, widescreen", 
+Product.create!(:name => "Monitor Benq 17",
+    :description => "alto contraste, nitido, widescreen",
     :price => 150.00)
-Product.create!(:name => "Router LinkSys wrt54g", 
+Product.create!(:name => "Router LinkSys wrt54g",
     :description => "router hogareño posee 4 bocas 10/100, conexion inhalambrica con doble antena, absolutamente configurable",
     :price => 75.00)
-Product.create!(:name => "Camara Benq 14M", 
+Product.create!(:name => "Camara Benq 14M",
     :description => "Camara de 14Mgp - video, mil caracteristicas que nunca podrá utilizar",
     :price => 110.00)
-Product.create!(:name => "Samsung Galaxy S", 
+Product.create!(:name => "Samsung Galaxy S",
     :description => "Telefono con sistema operativo android, wifi, touch ",
     :price => 2000.00)
-Product.create!(:name => "MacBook 13", 
+Product.create!(:name => "MacBook 13",
     :description => "intel dual core, 13.3, 4Gb, HD250Gb, MacOSX 10.6",
     :price => 0.01)
-Product.create!(:name => "Portafolio para notebook", 
+Product.create!(:name => "Portafolio para notebook",
     :description => "varios colores en nylon resistente al agua",
     :price => 100.00)
-Product.create!(:name => "Lapiz - portamina", 
+Product.create!(:name => "Lapiz - portamina",
     :description => "resiste todo y mas",
     :price => 7.00)
 
 #.. Facil pero muy facil. Insertamos datos por una cantidad mayor facilmente ..
 
-(1..100).each do |i| 
+(1..100).each do |i|
     Product.create!(:name => "Product N:" + i.to_s,
         :description => "Description de texto variable para que se enumeren todas las virtudes de nuestro produto n: " + i.to_s,
         :price => (i.to_f * 10) + (i * i) )
 end
-</code></pre>	
+</code></pre>
 
 
 <h3>Modelos anidados con <a href="https://github.com/nathanvda/cocoon">cocoon</a></h3>
@@ -314,12 +314,15 @@ end
     <li><a href="https://github.com/amatsuda/kaminari">kaminari</a></li>
     <li><a href="http://railsapi.com/">Rails Searchable API Doc</a></li>
     <li><a href="http://apidock.com/rails">Apidock</a></li>
+    <li><a href="http://guides.rubyonrails.org/">Ruby on rails guides</a></li>
 </ul>
 
+<h2>Presentación</h2>
+<iframe src="https://docs.google.com/present/embed?id=dcfq9zbg_2501f9cdn3c8" frameborder="0" width="410" height="342"></iframe>
 
 <h2>Download</h2>
 <p>
-  Puedes descargar este proyecto en los siguientes formatos 
+  Puedes descargar este proyecto en los siguientes formatos
   <a href="http://github.com/maxidr/mug_rails_2/zipball/master">zip</a> o
   <a href="http://github.com/maxidr/mug_rails_2/tarball/master">tar</a>.
 </p>
